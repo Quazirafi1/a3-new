@@ -1,0 +1,79 @@
+@namespace(uri="http://www.example.org/marketplace", prefix="marketplace")
+package marketplace;
+
+class Marketplace extends NamedElement {
+	val User[*] user;
+	val ProductListing[*] productlisting;
+	val Product[*] product;
+	val AttributeMetadataSpecification[+] attributemetadataspecification;
+	val Action[*] action;
+}
+
+class User extends NamedElement {
+	val UserAttribute[*] userattribute;
+	ref AttributeMetadataSpecification[1] attributemetadataspecification;
+	attr String description;
+}
+
+class UserAttribute extends Attribute, NamedElement {
+}
+
+class Attribute extends NamedElement {
+	ref AttributeMetadata[1] attributemetadata;
+}
+
+class ProductListing extends NamedElement {
+	val ProductListingAttribute[*] productlistingattribute;
+	ref AttributeMetadataSpecification attributemetadataspecification;
+	attr String description;
+}
+
+class ProductListingAttribute extends Attribute, NamedElement {
+}
+
+class Product extends NamedElement {
+	val ProductAttribute[*] productattribute;
+	ref AttributeMetadataSpecification[1] attributemetadataspecification;
+	attr String description;
+}
+
+class ProductAttribute extends Attribute, NamedElement {
+}
+
+class Action extends NamedElement {
+}
+
+class Message extends Action, NamedElement {
+	ref AttributeMetadataSpecification attributemetadataspecification;
+	ref MessageAttribute[*] messageattribute;
+}
+
+class MessageAttribute extends Attribute, NamedElement {
+}
+
+class Filter extends Action, Attribute {
+	ref ProductAttribute[1] productattribute;
+}
+
+class AttributeMetadataSpecification extends NamedElement {
+	attr String description;
+	val AttributeMetadata[*] attributemetadata;
+}
+
+class AttributeMetadata extends NamedElement {
+	attr AttributeType type;
+	attr String description;
+	attr boolean isOptional;
+}
+
+enum AttributeType {
+	Integer = 0;
+	Real = 1;
+	Boolean = 2;
+	String = 3;
+}
+
+class NamedElement {
+	attr String name;
+}
+

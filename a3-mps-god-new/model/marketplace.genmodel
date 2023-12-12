@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/com.a3.marketplace.model/src-gen" creationIcons="false"
+    editDirectory="/com.a3.marketplace.model.edit/src-gen" editorDirectory="/com.a3.marketplace.model.editor/src-gen"
+    modelPluginID="com.a3.marketplace.model" modelName="Marketplace" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>marketplace.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Marketplace" basePackage="com.a3.marketplace.model" disposableProviderFactory="true"
+      ecorePackage="marketplace.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="marketplace.ecore#//AttributeType">
+      <genEnumLiterals ecoreEnumLiteral="marketplace.ecore#//AttributeType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="marketplace.ecore#//AttributeType/Real"/>
+      <genEnumLiterals ecoreEnumLiteral="marketplace.ecore#//AttributeType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="marketplace.ecore#//AttributeType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="marketplace.ecore#//AttributeType/autoIncrement"/>
+    </genEnums>
+    <genClasses ecoreClass="marketplace.ecore#//Marketplace">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Marketplace/user"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Marketplace/productlisting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Marketplace/product"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Marketplace/attributemetadataspecification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Marketplace/action"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//User">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//User/userattribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marketplace.ecore#//User/attributemetadataspecification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//User/description"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//UserAttribute"/>
+    <genClasses ecoreClass="marketplace.ecore#//Attribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marketplace.ecore#//Attribute/attributemetadata"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//ProductListing">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//ProductListing/productlistingattribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marketplace.ecore#//ProductListing/attributemetadataspecification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//ProductListing/description"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//ProductListingAttribute"/>
+    <genClasses ecoreClass="marketplace.ecore#//Product">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Product/productattribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marketplace.ecore#//Product/attributemetadataspecification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//Product/description"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//ProductAttribute"/>
+    <genClasses ecoreClass="marketplace.ecore#//Action"/>
+    <genClasses ecoreClass="marketplace.ecore#//Message">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marketplace.ecore#//Message/attributemetadataspecification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//Message/messageattribute"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//MessageAttribute"/>
+    <genClasses ecoreClass="marketplace.ecore#//Filter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference marketplace.ecore#//Filter/productattribute"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//AttributeMetadataSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//AttributeMetadataSpecification/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference marketplace.ecore#//AttributeMetadataSpecification/attributemetadata"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//AttributeMetadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//AttributeMetadata/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//AttributeMetadata/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//AttributeMetadata/isOptional"/>
+    </genClasses>
+    <genClasses ecoreClass="marketplace.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute marketplace.ecore#//NamedElement/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

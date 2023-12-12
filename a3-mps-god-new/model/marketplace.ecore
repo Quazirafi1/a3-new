@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="marketplace" nsURI="http://www.example.org/marketplace" nsPrefix="marketplace">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Marketplace" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="user" upperBound="-1" eType="#//User"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productlisting" upperBound="-1"
+        eType="#//ProductListing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="product" upperBound="-1"
+        eType="#//Product" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadataspecification"
+        lowerBound="1" upperBound="-1" eType="#//AttributeMetadataSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" upperBound="-1"
+        eType="#//Action" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueUserAttribute EnsureMandatoryAttributePresenceInUser"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="UniqueUserAttribute" value="userattribute.attributemetadata->asSet()->size() = userattribute->size()"/>
+      <details key="EnsureMandatoryAttributePresenceInUser" value="self.attributemetadataspecification.attributemetadata->select(am | am.isOptional = false)->forAll(mandatoryAttribute | self.userattribute->exists(pa | pa.attributemetadata = mandatoryAttribute))"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userattribute" upperBound="-1"
+        eType="#//UserAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadataspecification"
+        lowerBound="1" eType="#//AttributeMetadataSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserAttribute" eSuperTypes="#//Attribute #//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadata" lowerBound="1"
+        eType="#//AttributeMetadata"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductListing" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueProductListingAttribute EnsureMandatoryAttributePresenceInProductListing"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="UniqueProductListingAttribute" value="productlistingattribute.attributemetadata->asSet()->size() = productlistingattribute->size()"/>
+      <details key="EnsureMandatoryAttributePresenceInProductListing" value="self.attributemetadataspecification.attributemetadata->select(am | am.isOptional = false)->forAll(mandatoryAttribute | self.productlistingattribute->exists(pa | pa.attributemetadata = mandatoryAttribute))"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productlistingattribute"
+        upperBound="-1" eType="#//ProductListingAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadataspecification"
+        eType="#//AttributeMetadataSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductListingAttribute" eSuperTypes="#//Attribute #//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueProductAttribute EnsureMandatoryAttributePresenceInProduct"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="UniqueProductAttribute" value="productattribute.attributemetadata->asSet()->size() = productattribute->size()"/>
+      <details key="EnsureMandatoryAttributePresenceInProduct" value="self.attributemetadataspecification.attributemetadata->select(am | am.isOptional = false)->forAll(mandatoryAttribute | self.productattribute->exists(pa | pa.attributemetadata = mandatoryAttribute))"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productattribute" upperBound="-1"
+        eType="#//ProductAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadataspecification"
+        lowerBound="1" eType="#//AttributeMetadataSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductAttribute" eSuperTypes="#//Attribute #//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//NamedElement #//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadataspecification"
+        eType="#//AttributeMetadataSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageattribute" upperBound="-1"
+        eType="#//MessageAttribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageAttribute" eSuperTypes="#//Attribute #//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="#//NamedElement #//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productattribute" lowerBound="1"
+        eType="#//ProductAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeMetadataSpecification" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="uniqueNames"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="uniqueNames" value="attributemetadata.name->asSet()->size() = attributemetadata->size()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributemetadata" upperBound="-1"
+        eType="#//AttributeMetadata" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeMetadata" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//AttributeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOptional" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AttributeType">
+    <eLiterals name="Integer"/>
+    <eLiterals name="Real" value="1"/>
+    <eLiterals name="Boolean" value="2"/>
+    <eLiterals name="String" value="3"/>
+    <eLiterals name="autoIncrement" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

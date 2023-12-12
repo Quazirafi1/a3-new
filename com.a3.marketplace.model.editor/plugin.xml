@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated marketplace -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.a3.marketplace.model.marketplace.presentation.MarketplaceModelWizardID"
+            name="%_UI_MarketplaceModelWizard_label"
+            class="com.a3.marketplace.model.marketplace.presentation.MarketplaceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MarketplaceModelFile.gif">
+         <description>%_UI_MarketplaceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated marketplace -->
+      <editor
+            id="com.a3.marketplace.model.marketplace.presentation.MarketplaceEditorID"
+            name="%_UI_MarketplaceEditor_label"
+            icon="icons/full/obj16/MarketplaceModelFile.gif"
+            extensions="marketplace"
+            class="com.a3.marketplace.model.marketplace.presentation.MarketplaceEditor"
+            contributorClass="com.a3.marketplace.model.marketplace.presentation.MarketplaceActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

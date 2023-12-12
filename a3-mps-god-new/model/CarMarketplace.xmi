@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marketplace:Marketplace
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:marketplace="http://www.example.org/marketplace"
+    name="CarMarketplace">
+  <user name="NormalUser"
+      attributemetadataspecification="//@attributemetadataspecification.1"
+      description="Normal users who can post ProductListings on the marketplace to sell or browse ProductListings to buy cars">
+    <userattribute
+        name="autoIncrement"
+        attributemetadata="//@attributemetadataspecification.1/@attributemetadata.0"/>
+    <userattribute
+        name="string"
+        attributemetadata="//@attributemetadataspecification.1/@attributemetadata.1"/>
+    <userattribute
+        name="string"
+        attributemetadata="//@attributemetadataspecification.1/@attributemetadata.2"/>
+  </user>
+  <productlisting
+      name="ProductListingWithTransparentPrice"
+      attributemetadataspecification="//@attributemetadataspecification.2">
+    <productlistingattribute
+        name="autoIncrement"
+        attributemetadata="//@attributemetadataspecification.2/@attributemetadata.0"/>
+    <productlistingattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.2/@attributemetadata.1"/>
+    <productlistingattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.2/@attributemetadata.2"/>
+    <productlistingattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.2/@attributemetadata.3"/>
+    <productlistingattribute
+        name="string"
+        attributemetadata="//@attributemetadataspecification.2/@attributemetadata.4"/>
+  </productlisting>
+  <product name="GasolineCar"
+      attributemetadataspecification="//@attributemetadataspecification.0"
+      description="Cars that still run on gasoline, will required to visit the gas station!">
+    <productattribute
+        name="string"
+        attributemetadata="//@attributemetadataspecification.0/@attributemetadata.0"/>
+    <productattribute
+        name="string"
+        attributemetadata="//@attributemetadataspecification.0/@attributemetadata.1"/>
+    <productattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.0/@attributemetadata.2"/>
+    <productattribute
+        name="real"
+        attributemetadata="//@attributemetadataspecification.0/@attributemetadata.4"/>
+  </product>
+  <attributemetadataspecification
+      name="productSpecs"
+      description="These are the specs to define the metadata of the attributes for Product">
+    <attributemetadata
+        name="brand"
+        type="String"
+        description="This is the brand of the car (Alfa Romeo, Ferrari, Fiat...)"/>
+    <attributemetadata
+        name="model"
+        type="String"
+        description="This is the model of the car (Enzo, SF90 Stradale...)"/>
+    <attributemetadata
+        name="year"
+        description="This is the year when the car was manufactured"/>
+    <attributemetadata
+        name="mileage"
+        description="Only for gasoline cars: how long (kilometer) can the car drive with 01 liter of gasoline"
+        isOptional="true"/>
+    <attributemetadata
+        name="batteryCapacity"
+        description="Only for electric cars: the capacity of the car's battery (kWh)"
+        isOptional="true"/>
+  </attributemetadataspecification>
+  <attributemetadataspecification
+      name="userSpecs"
+      description="These are the specs to define the metadata of the attributes for User">
+    <attributemetadata
+        name="userID"
+        type="autoIncrement"
+        description="This is the unique ID of the user"/>
+    <attributemetadata
+        name="email"
+        type="String"
+        description="This is the email address of the user"/>
+    <attributemetadata
+        name="telephone"
+        type="String"
+        description="This is the telephone number of the user"
+        isOptional="true"/>
+    <attributemetadata
+        name="privilege"
+        type="String"
+        description="Only for admins, this is the privilege of the admins"
+        isOptional="true"/>
+  </attributemetadataspecification>
+  <attributemetadataspecification
+      name="productListingSpecs"
+      description="These are the specs to define the metadata of the attributes for ProductListing">
+    <attributemetadata
+        name="listingID"
+        type="autoIncrement"
+        description="This is the unique ID of the listing"/>
+    <attributemetadata
+        name="sellerID"
+        description="This is the ID of the seller who creates this listing, is User's userID"/>
+    <attributemetadata
+        name="productItemID"
+        description="This is the ID of the productItem being advertised for sale"/>
+    <attributemetadata
+        name="price"
+        description="This is the price of the item"
+        isOptional="true"/>
+    <attributemetadata
+        name="description"
+        type="String"
+        description="This is the description of the item"/>
+    <attributemetadata
+        name="auctionDetails"
+        type="String"
+        description="This contains the details for the auction of a ProductListing if the price is not set"
+        isOptional="true"/>
+  </attributemetadataspecification>
+  <attributemetadataspecification
+      name="messageSpecs"
+      description="These are the specs to define the metadata of the attributes for Message between users">
+    <attributemetadata
+        name="messageID"
+        description="This is the unique ID of the message"/>
+    <attributemetadata
+        name="sendingUserID"
+        description="This is the ID of the sending user of this conversation"/>
+    <attributemetadata
+        name="receipientUserID"
+        description="This is the ID of the receiving user of this conversation"/>
+    <attributemetadata
+        name="messageBody"
+        type="String"
+        description="This is the message body"/>
+    <attributemetadata
+        name="notificationText"
+        type="String"
+        description="This is a notification"
+        isOptional="true"/>
+  </attributemetadataspecification>
+  <action xsi:type="marketplace:Message">
+    <messageattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.3/@attributemetadata.0"/>
+    <messageattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.3/@attributemetadata.1"/>
+    <messageattribute
+        name="integer"
+        attributemetadata="//@attributemetadataspecification.3/@attributemetadata.2"/>
+    <messageattribute
+        name="string"
+        attributemetadata="//@attributemetadataspecification.3/@attributemetadata.3"/>
+  </action>
+  <action xsi:type="marketplace:Filter"
+      name="BrandFilter"
+      productattribute="//@product.0/@productattribute.1"/>
+</marketplace:Marketplace>
